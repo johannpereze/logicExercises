@@ -59,29 +59,85 @@ const stringSplitBySeparator = (string, separator) =>
 
 const stringRepeatXTimes = (string, repeatTimes) => {
   let stringRepeat = [];
-  if (typeof string != "string" || typeof repeatTimes != "number") {
+  if (typeof string != "string" || typeof repeatTimes != "number")
     return (stringRepeat = console.warn(
       "Error. You have to input a string and a number"
     ));
-  } else {
-    for (let i = 0; i < repeatTimes; i++) {
-      stringRepeat.push(string);
-    }
-    return (stringRepeat = console.log(stringRepeat.join(" ")));
+  if (repeatTimes === 0)
+    return console.warn("Error. You can't repeat it 0 times");
+  if (Math.sign(repeatTimes) === -1)
+    return console.warn("Error. You can't repeat it negative times");
+  for (let i = 0; i < repeatTimes; i++) {
+    stringRepeat.push(string);
   }
+  return (stringRepeat = console.warn(stringRepeat.join(" ")));
 };
 
-//function calls:
-stringRepeatXTimes("Hola Mundo", 5);
-stringRepeatXTimes("Hola Mundo", 2.5);
-stringRepeatXTimes("Hola Mundo", "5");
-stringRepeatXTimes(["Hola Mundo", "Adios Mundo"], "5");
-stringRepeatXTimes(5, 5);
-stringRepeatXTimes("Hola Mundo", 5);
-stringRepeatXTimes("Hola Mundo", -5); //este no esta tenido en cuenta
-stringRepeatXTimes("Hola Mundo", 0); //este no esta tenido en cuenta
+// //function calls:
+// stringRepeatXTimes("Hola Mundo", 5);
+// stringRepeatXTimes("Hola Mundo", 2.5);
+// stringRepeatXTimes("Hola Mundo", "5");
+// stringRepeatXTimes(["Hola Mundo", "Adios Mundo"], "5");
+// stringRepeatXTimes(5, 5);
+// stringRepeatXTimes("Hola Mundo", 5);
+// stringRepeatXTimes("Hola Mundo", -5);
+// stringRepeatXTimes("Hola Mundo", 0);
 
 // 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
 // 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
 // 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
 // 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+//5)
+
+const reverseString = (string) =>
+  typeof string != "string"
+    ? console.warn("You have to input a string")
+    : console.log(string.split("").reverse().join(""));
+
+//function calls:
+
+//reverseString("Hola Mundo");
+
+//6)
+
+const timesWordRepeats = (string, repeatedWord) => {
+  const regex = new RegExp(repeatedWord, "ig");
+  if (typeof string != "string")
+    return console.warn("Your first argument must be a string");
+  if (typeof repeatedWord != "string")
+    return console.warn("Your second argument must be a string");
+  return console.log(string.match(regex).length);
+};
+
+//function calls:
+
+timesWordRepeats("hola mundo adios mundo, que mundo tan Mundo", "mundo");
+
+//7)
+
+const esPalindromo = (string) => {
+  if (typeof string != "string")
+    return console.warn("Your input must be a string");
+  const reversedString = string.split("").reverse().join("");
+  return string.toLowerCase() === reversedString.toLowerCase();
+};
+
+//function calls:
+
+esPalindromo("Salas");
+esPalindromo("salas");
+
+//8)
+
+const deleteCharacters = (string, characters) => {
+  if (typeof string != "string")
+    return console.warn("Your first argument must be a string");
+  if (typeof characters != "string")
+    return console.warn("Your second argument must be a string too");
+  return console.log(string.split(characters).join(""));
+};
+
+//function calls:
+
+deleteCharacters("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
