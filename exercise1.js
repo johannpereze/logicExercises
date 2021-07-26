@@ -40,6 +40,23 @@ const trimmedText = (string, numOfCharacters) => {
 
 //3)
 
-const stringSplitBySeparator =()=>{
+const stringSplitBySeparator = (string, separator) => {
+  if (
+    typeof string === "string" &&
+    (typeof separator === "string" || typeof separator === "number")
+  ) {
+    return string.split(separator);
+  } else {
+    return "Error. You have to input a string and a separator that can be a character, a string or a number";
+  }
+};
 
-}
+//function calls:
+
+console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", " "));
+console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", "a"));
+console.log(stringSplitBySeparator(56456456465, "6"));
+console.log(stringSplitBySeparator("56456456465", "6"));
+console.log(stringSplitBySeparator("56456456465", 6));
+console.log(stringSplitBySeparator("21/09/2021", "/"));
+
