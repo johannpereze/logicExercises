@@ -53,10 +53,31 @@ const stringSplitBySeparator = (string, separator) => {
 
 //function calls:
 
-console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", " "));
-console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", "a"));
-console.log(stringSplitBySeparator(56456456465, "6"));
-console.log(stringSplitBySeparator("56456456465", "6"));
-console.log(stringSplitBySeparator("56456456465", 6));
-console.log(stringSplitBySeparator("21/09/2021", "/"));
+// console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", " "));
+// console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", "a"));
+// console.log(stringSplitBySeparator(56456456465, "6"));
+// console.log(stringSplitBySeparator("56456456465", "6"));
+// console.log(stringSplitBySeparator("56456456465", 6));
+// console.log(stringSplitBySeparator("21/09/2021", "/"));
 
+//4)
+
+const stringRepeatXTimes = (string, repeatTimes) => {
+    let stringRepeat = [];
+  if (typeof(string) != "string" || typeof(repeatTimes) != "number") {
+    stringRepeat = "Error. You have to input a string and a number";
+  } else {
+    for (let i = 0; i < repeatTimes; i++) {
+      stringRepeat.push(string)
+    }
+    stringRepeat = stringRepeat.join(" ")
+  }
+  return stringRepeat
+};
+
+//function calls:
+console.log(stringRepeatXTimes("Hola Mundo", 5));
+console.log(stringRepeatXTimes("Hola Mundo", 2.5));
+console.log(stringRepeatXTimes("Hola Mundo", "5"));
+console.log(stringRepeatXTimes(["Hola Mundo", "Adios Mundo"], "5"));
+console.log(stringRepeatXTimes(5, 5));
