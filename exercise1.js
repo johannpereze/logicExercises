@@ -5,20 +5,41 @@
 
 //1)
 
-const numberOfCharactersOfAString = (string)=>{
-typeof(string) != 'string'
-? console.log("Error, your input is not a string")
-: console.log(`The string length is: ${string.length}`);
-}
+const numberOfCharactersOfAString = (string) => {
+  typeof string != "string"
+    ? console.log("Error, your input is not a string")
+    : console.log(`The string length is: ${string.length}`);
+};
 
-//ejecución:
+//function calls:
 
-console.log(numberOfCharactersOfAString("Hola Mundo"));
-console.log(numberOfCharactersOfAString(5245));
-console.log(numberOfCharactersOfAString([4,5,9,6,5,4,8]));
+// console.log(numberOfCharactersOfAString("Hola Mundo"));
+// console.log(numberOfCharactersOfAString(5245));
+// console.log(numberOfCharactersOfAString([4, 5, 9, 6, 5, 4, 8]));
 
 //2)
 
-// const textoRecortado =(cadena, caracteres)=>{
+const trimmedText = (string, numOfCharacters) => {
+  //   if (typeof string != "string" || typeof numOfCharacters != "number") {
+  //     console.log("Error, your input is not a string and a number");
+  //   } else {
+  //     const trimmedString = string.slice(0, numOfCharacters);
+  //     console.log(`The trimmed string is: ${trimmedString}`);
+  //   }
+  const trimmedString =
+    typeof string != "string" || typeof numOfCharacters != "number"
+      ? "Error, your input is not a string and a number"
+      : `The trimmed string is: ${string.slice(0, numOfCharacters)}`;
+  return trimmedString;
+};
 
-// }
+//function calls:
+
+// console.log(trimmedText("Hola Mundo", 4));
+// console.log(trimmedText("Hola Mundo", "4"));
+
+//3)
+
+const stringSplitBySeparator =()=>{
+
+}
