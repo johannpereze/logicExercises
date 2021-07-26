@@ -5,79 +5,83 @@
 
 //1)
 
-const numberOfCharactersOfAString = (string) => {
+const numberOfCharactersOfAString = (string) =>
   typeof string != "string"
-    ? console.log("Error, your input is not a string")
+    ? console.warn("Error, your input is not a string")
     : console.log(`The string length is: ${string.length}`);
-};
 
 //function calls:
 
-// console.log(numberOfCharactersOfAString("Hola Mundo"));
-// console.log(numberOfCharactersOfAString(5245));
-// console.log(numberOfCharactersOfAString([4, 5, 9, 6, 5, 4, 8]));
+// numberOfCharactersOfAString("Hola Mundo");
+// numberOfCharactersOfAString(5245);
+// numberOfCharactersOfAString([4, 5, 9, 6, 5, 4, 8]);
+// numberOfCharactersOfAString();
 
 //2)
 
 const trimmedText = (string, numOfCharacters) => {
-  //   if (typeof string != "string" || typeof numOfCharacters != "number") {
-  //     console.log("Error, your input is not a string and a number");
-  //   } else {
-  //     const trimmedString = string.slice(0, numOfCharacters);
-  //     console.log(`The trimmed string is: ${trimmedString}`);
-  //   }
   const trimmedString =
     typeof string != "string" || typeof numOfCharacters != "number"
-      ? "Error, your input is not a string and a number"
-      : `The trimmed string is: ${string.slice(0, numOfCharacters)}`;
+      ? console.warn("Error, your input is not a string and a number")
+      : console.log(
+          `The trimmed string is: ${string.slice(0, numOfCharacters)}`
+        );
   return trimmedString;
 };
 
 //function calls:
 
-// console.log(trimmedText("Hola Mundo", 4));
-// console.log(trimmedText("Hola Mundo", "4"));
+// trimmedText("Hola Mundo", 4);
+// trimmedText("Hola Mundo", "4");
+// trimmedText("Hola Mundo");
 
 //3)
 
-const stringSplitBySeparator = (string, separator) => {
-  if (
-    typeof string === "string" &&
-    (typeof separator === "string" || typeof separator === "number")
-  ) {
-    return string.split(separator);
-  } else {
-    return "Error. You have to input a string and a separator that can be a character, a string or a number";
-  }
-};
+const stringSplitBySeparator = (string, separator) =>
+  typeof string === "string" &&
+  (typeof separator === "string" || typeof separator === "number")
+    ? console.log(string.split(separator))
+    : console.warn(
+        "Error. You have to input a string and a separator that can be a character, a string or a number"
+      );
 
 //function calls:
 
-// console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", " "));
-// console.log(stringSplitBySeparator("Hola mundo, me llamo Johann", "a"));
-// console.log(stringSplitBySeparator(56456456465, "6"));
-// console.log(stringSplitBySeparator("56456456465", "6"));
-// console.log(stringSplitBySeparator("56456456465", 6));
-// console.log(stringSplitBySeparator("21/09/2021", "/"));
+// stringSplitBySeparator("Hola mundo, me llamo Johann", " ");
+// stringSplitBySeparator("Hola mundo, me llamo Johann", "a");
+// stringSplitBySeparator(56456456465, "6");
+// stringSplitBySeparator("56456456465", "6");
+// stringSplitBySeparator("56456456465", 6);
+// stringSplitBySeparator("21/09/2021", "/");
+// stringSplitBySeparator();
 
 //4)
 
 const stringRepeatXTimes = (string, repeatTimes) => {
-    let stringRepeat = [];
-  if (typeof(string) != "string" || typeof(repeatTimes) != "number") {
-    stringRepeat = "Error. You have to input a string and a number";
+  let stringRepeat = [];
+  if (typeof string != "string" || typeof repeatTimes != "number") {
+    return (stringRepeat = console.warn(
+      "Error. You have to input a string and a number"
+    ));
   } else {
     for (let i = 0; i < repeatTimes; i++) {
-      stringRepeat.push(string)
+      stringRepeat.push(string);
     }
-    stringRepeat = stringRepeat.join(" ")
+    return (stringRepeat = console.log(stringRepeat.join(" ")));
   }
-  return stringRepeat
 };
 
 //function calls:
-console.log(stringRepeatXTimes("Hola Mundo", 5));
-console.log(stringRepeatXTimes("Hola Mundo", 2.5));
-console.log(stringRepeatXTimes("Hola Mundo", "5"));
-console.log(stringRepeatXTimes(["Hola Mundo", "Adios Mundo"], "5"));
-console.log(stringRepeatXTimes(5, 5));
+stringRepeatXTimes("Hola Mundo", 5);
+stringRepeatXTimes("Hola Mundo", 2.5);
+stringRepeatXTimes("Hola Mundo", "5");
+stringRepeatXTimes(["Hola Mundo", "Adios Mundo"], "5");
+stringRepeatXTimes(5, 5);
+stringRepeatXTimes("Hola Mundo", 5);
+stringRepeatXTimes("Hola Mundo", -5); //este no esta tenido en cuenta
+stringRepeatXTimes("Hola Mundo", 0); //este no esta tenido en cuenta
+
+// 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+// 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+// 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+// 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
