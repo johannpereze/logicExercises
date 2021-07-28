@@ -112,21 +112,22 @@ const timesWordRepeats = (string, repeatedWord) => {
 
 //function calls:
 
-timesWordRepeats("hola mundo adios mundo, que mundo tan Mundo", "mundo");
+//timesWordRepeats("hola mundo adios mundo, que mundo tan Mundo", "mundo");
 
 //7)
 
 const esPalindromo = (string) => {
+  string = string.toLowerCase();
   if (typeof string != "string")
     return console.warn("Your input must be a string");
   const reversedString = string.split("").reverse().join("");
-  return string.toLowerCase() === reversedString.toLowerCase();
+  return string === reversedString;
 };
 
 //function calls:
 
-esPalindromo("Salas");
-esPalindromo("salas");
+// esPalindromo("Salas");
+// esPalindromo("salas");
 
 //8)
 
@@ -140,4 +141,63 @@ const deleteCharacters = (string, characters) => {
 
 //function calls:
 
-deleteCharacters("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+// deleteCharacters("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz");
+
+// 9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+// 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+// 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+//9)
+
+const numFrom501to600 = () =>
+  console.log(Math.round(Math.random() * 100 + 500));
+
+//function calls:
+
+numFrom501to600()
+
+//10)
+
+const evalCapicua = (number) => {
+  if (typeof number != 'number') return console.log("Your input must be a number")
+  number = number.toString(10);
+  const numberReversed = number.split("").reverse().join("");
+  return console.log(number === numberReversed);
+};
+
+//function calls:
+
+evalCapicua(42011024);
+evalCapicua("42011024");
+
+//11 //Volver a resolver este pero sin convertir nada a array
+
+const arrayOfPositiveIntegers = (number) => {
+  const array = [number];
+  let newNumber = number;
+  for (let i = 1; i < number; i++) {
+    array.unshift((newNumber -= 1));
+  }
+  return array;
+};
+
+const factorialOf = (number) => {
+  if (typeof number != 'number' || number <= 0) return console.log("Your input must be an integer number bigger than 0")
+  const positiveIntegers = arrayOfPositiveIntegers(number);
+  const factorial = positiveIntegers.reduce(
+    (accumulator, currentValue) => accumulator * currentValue
+  );
+  return console.log(factorial);
+};
+
+//function calls:
+
+factorialOf(6); 
+factorialOf("6"); 
+factorialOf(0); 
+factorialOf(-25); 
+
+
+// 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+// 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+// 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
