@@ -236,6 +236,7 @@ const isPrime = (number) => {
 //isPrime(2);
 // isPrime(7);
 // isPrime("7");
+// isPrime(995);
 
 //13)
 
@@ -259,7 +260,7 @@ const temperatureConversor =(temperature, system)=>{
   if (system === "c"){
     console.log(`${temperature}ºC es igual a ${(temperature*9/5 +32)}ºF`);
   }else{
-    console.log(`${temperature}ºF es igual a ${(temperature-32) *5/9}ºF`);
+    console.log(`${temperature}ºF es igual a ${(temperature-32) *5/9}ºC`);
   }
 }
 
@@ -272,3 +273,7 @@ const temperatureConversor =(temperature, system)=>{
 
 temperatureConversor(0,"C")
 temperatureConversor(32,"F")
+temperatureConversor(45,"C")
+temperatureConversor(1220,"F")
+temperatureConversor(423,"C")
+temperatureConversor(3452,"F")
