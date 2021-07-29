@@ -154,12 +154,13 @@ const numFrom501to600 = () =>
 
 //function calls:
 
-numFrom501to600()
+//numFrom501to600()
 
 //10)
 
 const evalCapicua = (number) => {
-  if (typeof number != 'number') return console.log("Your input must be a number")
+  if (typeof number != "number")
+    return console.log("Your input must be a number");
   number = number.toString(10);
   const numberReversed = number.split("").reverse().join("");
   return console.log(number === numberReversed);
@@ -167,37 +168,107 @@ const evalCapicua = (number) => {
 
 //function calls:
 
-evalCapicua(42011024);
-evalCapicua("42011024");
+//evalCapicua(42011024);
+//evalCapicua("42011024");
 
 //11 //Volver a resolver este pero sin convertir nada a array
 
-const arrayOfPositiveIntegers = (number) => {
-  const array = [number];
-  let newNumber = number;
-  for (let i = 1; i < number; i++) {
-    array.unshift((newNumber -= 1));
-  }
-  return array;
-};
+// const arrayOfPositiveIntegers = (number) => {
+//   const array = [number];
+//   let newNumber = number;
+//   for (let i = 1; i < number; i++) {
+//     array.unshift((newNumber -= 1));
+//   }
+//   return array;
+// };
+
+// const factorialOf = (number) => {
+//   if (typeof number != 'number' || number <= 0) return console.log("Your input must be an integer number bigger than 0")
+//   const positiveIntegers = arrayOfPositiveIntegers(number);
+//   const factorial = positiveIntegers.reduce(
+//     (accumulator, currentValue) => accumulator * currentValue
+//   );
+//   return console.log(factorial);
+// };
 
 const factorialOf = (number) => {
-  if (typeof number != 'number' || number <= 0) return console.log("Your input must be an integer number bigger than 0")
-  const positiveIntegers = arrayOfPositiveIntegers(number);
-  const factorial = positiveIntegers.reduce(
-    (accumulator, currentValue) => accumulator * currentValue
-  );
+  if (typeof number != "number" || number <= 0)
+    return console.log("Your input must be an integer number bigger than 0");
+  let factorial = number;
+  let acumulador = number;
+  for (let i = 1; i < number; i++) {
+    acumulador = acumulador - 1;
+    factorial = factorial * acumulador;
+  }
   return console.log(factorial);
 };
 
 //function calls:
 
-factorialOf(6); 
-factorialOf("6"); 
-factorialOf(0); 
-factorialOf(-25); 
-
+// factorialOf(5); //120
+// factorialOf(6); //720
+// factorialOf("6");
+// factorialOf(0);
+// factorialOf(-25);
 
 // 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
 // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
 // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+
+
+//12)
+
+const isPrime = (number) => {
+  if (typeof number != "number" || number <= 0)
+    return console.log("Your input must be an integer number bigger than 0");
+  for (let i = 2; i < number; i++) {
+    console.log(`${number} % ${i} = ${number % i} `);
+    if (number % i === 0) {
+      return console.log(false);
+    }
+  }
+  return console.log(true);
+};
+
+//function calls:
+
+
+//isPrime(2);
+// isPrime(7);
+// isPrime("7");
+
+//13)
+
+const evenOrOdd =(number)=>number % 2 ? console.log("impar") : console.log("par")
+
+//function calls:
+
+// evenOrOdd(1)
+// evenOrOdd(2)
+// evenOrOdd(3)
+// evenOrOdd(4)
+// evenOrOdd(86)
+// evenOrOdd(109)
+
+//14)
+
+const temperatureConversor =(temperature, system)=>{
+  if (typeof temperature != 'number') return console.log("The first value must be a number");
+  system = system.toLowerCase()
+  if (system != "c" && system != "f") return console.log("The second argument must be C or F");
+  if (system === "c"){
+    console.log(`${temperature}ºC es igual a ${(temperature*9/5 +32)}ºF`);
+  }else{
+    console.log(`${temperature}ºF es igual a ${(temperature-32) *5/9}ºF`);
+  }
+}
+
+//(0 °C × 9/5) + 32 = 32 °F
+//(32 °F − 32) × 5/9 = 0 °C
+
+
+
+//function calls:
+
+temperatureConversor(0,"C")
+temperatureConversor(32,"F")
