@@ -330,7 +330,14 @@ const priceDiscoutTotal = (price, discount) => {
 //17)
 
 const howManyYearsFrom = (date) => {
-  console.log(`Han pasado ${(((Date.now() - Date.parse(date))/86400000)/365.25).toFixed(3)} años desde la fecha dada`); 
+  if (!date instanceof Date) return console.log("You must input a valid date");
+    console.log(
+      `Han pasado ${(
+        (Date.now() - date.getTime()) /
+        86400000 /
+        365.25
+      ).toFixed(3)} años desde la fecha dada`
+    );
 };
 
 //function calls:
@@ -338,3 +345,4 @@ const howManyYearsFrom = (date) => {
 howManyYearsFrom(new Date(1984, 4, 23)); //devolverá 37 años
 howManyYearsFrom(new Date(1991, 7, 1)); //
 howManyYearsFrom(new Date(1966, 3, 3)); //
+howManyYearsFrom(new Date("azgdsz")); //
