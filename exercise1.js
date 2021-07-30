@@ -375,12 +375,13 @@ const countVowelsAndConsonants =(string)=>{
 
 //19)
 
-const isValidName =(name = undefined)=>{
-  if (name === undefined) return console.log("You must input something");
-  return console.log(`We believe your names is ${/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(name)}`);
+const isValidName =(userName = undefined)=>{
+  if (userName === undefined) return console.log("You must input something");
+  return console.log(`We believe your names is ${/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(userName)}`);
 }
 
 //function calls:
+
 // isValidName("Jon Mircha");
 // isValidName("Johann Sebastian Pérez");
 // isValidName("Jon8965");
@@ -388,3 +389,21 @@ const isValidName =(name = undefined)=>{
 // isValidName(5456456);
 // isValidName();
 
+//20 
+
+const isValidEMail =(eMail = undefined)=>{
+  if (eMail === undefined) return console.log("You must input something");
+  return console.log(`We believe your e-mail is ${/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(eMail)}`);
+} 
+
+//function calls:
+
+// isValidEMail("sebas.jsp@gmail.com")
+// isValidEMail("sebas.jsp&gmail.com")
+// isValidEMail("sebas.jsp@gmail.c")
+// isValidEMail("a@gmail.com")
+// isValidEMail("sebas.jsp@.com")
+// isValidEMail("sebas.jsp@gmail.com ")
+// isValidEMail("sebas.jsp @gmail.com")
+// isValidEMail(654564564)
+// isValidEMail()
