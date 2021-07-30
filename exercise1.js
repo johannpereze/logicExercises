@@ -215,7 +215,6 @@ const factorialOf = (number) => {
 // 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
 // 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
 
-
 //12)
 
 const isPrime = (number) => {
@@ -232,7 +231,6 @@ const isPrime = (number) => {
 
 //function calls:
 
-
 //isPrime(2);
 // isPrime(7);
 // isPrime("7");
@@ -240,7 +238,8 @@ const isPrime = (number) => {
 
 //13)
 
-const evenOrOdd =(number)=>number % 2 ? console.log("impar") : console.log("par")
+const evenOrOdd = (number) =>
+  number % 2 ? console.log("impar") : console.log("par");
 
 //function calls:
 
@@ -253,27 +252,63 @@ const evenOrOdd =(number)=>number % 2 ? console.log("impar") : console.log("par"
 
 //14)
 
-const temperatureConversor =(temperature, system)=>{
-  if (typeof temperature != 'number') return console.log("The first value must be a number");
-  system = system.toLowerCase()
-  if (system != "c" && system != "f") return console.log("The second argument must be C or F");
-  if (system === "c"){
-    console.log(`${temperature}ºC es igual a ${(temperature*9/5 +32)}ºF`);
-  }else{
-    console.log(`${temperature}ºF es igual a ${(temperature-32) *5/9}ºC`);
+const temperatureConversor = (temperature, system) => {
+  if (typeof temperature != "number")
+    return console.log("The first value must be a number");
+  system = system.toLowerCase();
+  if (system != "c" && system != "f")
+    return console.log("The second argument must be C or F");
+  if (system === "c") {
+    console.log(`${temperature}ºC es igual a ${(temperature * 9) / 5 + 32}ºF`);
+  } else {
+    console.log(
+      `${temperature}ºF es igual a ${((temperature - 32) * 5) / 9}ºC`
+    );
   }
-}
+};
 
 //(0 °C × 9/5) + 32 = 32 °F
 //(32 °F − 32) × 5/9 = 0 °C
 
+//function calls:
 
+// temperatureConversor(0,"C")
+// temperatureConversor(32,"F")
+// temperatureConversor(45,"C")
+// temperatureConversor(1220,"F")
+// temperatureConversor(423,"C")
+// temperatureConversor(3452,"F")
+
+// 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+// 16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+// 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+
+//15)
+
+const changeNumberBase = (number, base) => {
+  if (typeof number != "number")
+    return console.log("You must input a number as first parameter");
+
+  if (base != 2 && base != 10 || typeof base != 'number')
+    return console.log(
+      "You must input the number 2 if the number is binary or the number 10 if i'ts decimal as a second argument"
+    );
+
+  base === 10
+    ? console.log(parseInt(number, 10).toString(2))
+    : console.log(parseInt(number, 2).toString(10));
+};
 
 //function calls:
 
-temperatureConversor(0,"C")
-temperatureConversor(32,"F")
-temperatureConversor(45,"C")
-temperatureConversor(1220,"F")
-temperatureConversor(423,"C")
-temperatureConversor(3452,"F")
+// changeNumberBase(100, 2); //4
+// changeNumberBase(100, 10); //1100100
+// changeNumberBase(11101100, 2); //236
+// changeNumberBase(1000000, 2); //64
+// changeNumberBase(1000000, 10); //11110100001001000000
+// changeNumberBase(1000000, 8); //error
+// changeNumberBase(1000000, 0); //error
+// changeNumberBase(1000000, "10"); //error
+// changeNumberBase("1000000", 10); //error
+
+
