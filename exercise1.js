@@ -342,7 +342,49 @@ const howManyYearsFrom = (date) => {
 
 //function calls:
 
-howManyYearsFrom(new Date(1984, 4, 23)); //devolverá 37 años
-howManyYearsFrom(new Date(1991, 7, 1)); //
-howManyYearsFrom(new Date(1966, 3, 3)); //
-howManyYearsFrom(new Date("azgdsz")); //
+// howManyYearsFrom(new Date(1984, 4, 23)); //devolverá 37 años
+// howManyYearsFrom(new Date(1991, 7, 1)); //
+// howManyYearsFrom(new Date(1966, 3, 3)); //
+// howManyYearsFrom(new Date("azgdsz")); //
+
+
+// 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+// 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+// 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+
+//verificar que todo sean letras
+//borrar los espacios
+//contar las vocales
+//contar las consonantes
+
+//18)
+
+const countVowelsAndConsonants =(string)=>{
+  const vowels = string.match(/[aeiou]/ig)
+  const consonants = string.match(/[qwertypsdfghjklñzxcvbnm]/ig)
+  console.log(`The sentence has ${vowels.length} vowels and ${consonants.length} consonants`);
+  
+
+}
+
+//function calls:
+
+// countVowelsAndConsonants("Hola Mundo")
+// countVowelsAndConsonants("Johann Sebastian")
+// countVowelsAndConsonants("Cuantas vocales y consonantes tiene esta frase?")
+
+//19)
+
+const isValidName =(name = undefined)=>{
+  if (name === undefined) return console.log("You must input something");
+  return console.log(`We believe your names is ${/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(name)}`);
+}
+
+//function calls:
+// isValidName("Jon Mircha");
+// isValidName("Johann Sebastian Pérez");
+// isValidName("Jon8965");
+// isValidName("Jon_Mircha");
+// isValidName(5456456);
+// isValidName();
+
