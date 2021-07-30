@@ -289,7 +289,7 @@ const changeNumberBase = (number, base) => {
   if (typeof number != "number")
     return console.log("You must input a number as first parameter");
 
-  if (base != 2 && base != 10 || typeof base != 'number')
+  if ((base != 2 && base != 10) || typeof base != "number")
     return console.log(
       "You must input the number 2 if the number is binary or the number 10 if i'ts decimal as a second argument"
     );
@@ -311,4 +311,30 @@ const changeNumberBase = (number, base) => {
 // changeNumberBase(1000000, "10"); //error
 // changeNumberBase("1000000", 10); //error
 
+//16)
 
+const priceDiscoutTotal = (price, discount) => {
+  if (typeof price != "number" || typeof discount != "number")
+    return console.log("The arguments must be numbers");
+  console.log((price * (100 - discount)) / 100);
+};
+
+//function calls:
+
+// priceDiscoutTotal(100, 20); //80
+// priceDiscoutTotal("100", 20); //error
+// priceDiscoutTotal(100, "20"); //error
+// priceDiscoutTotal(100); //error
+// priceDiscoutTotal(243900,30); //
+
+//17)
+
+const howManyYearsFrom = (date) => {
+  console.log(`Han pasado ${(((Date.now() - Date.parse(date))/86400000)/365.25).toFixed(3)} años desde la fecha dada`); 
+};
+
+//function calls:
+
+howManyYearsFrom(new Date(1984, 4, 23)); //devolverá 37 años
+howManyYearsFrom(new Date(1991, 7, 1)); //
+howManyYearsFrom(new Date(1966, 3, 3)); //
