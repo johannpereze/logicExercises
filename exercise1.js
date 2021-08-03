@@ -331,13 +331,11 @@ const priceDiscoutTotal = (price, discount) => {
 
 const howManyYearsFrom = (date) => {
   if (!date instanceof Date) return console.log("You must input a valid date");
-    console.log(
-      `Han pasado ${(
-        (Date.now() - date.getTime()) /
-        86400000 /
-        365.25
-      ).toFixed(3)} años desde la fecha dada`
-    );
+  console.log(
+    `Han pasado ${((Date.now() - date.getTime()) / 86400000 / 365.25).toFixed(
+      3
+    )} años desde la fecha dada`
+  );
 };
 
 //function calls:
@@ -346,7 +344,6 @@ const howManyYearsFrom = (date) => {
 // howManyYearsFrom(new Date(1991, 7, 1)); //
 // howManyYearsFrom(new Date(1966, 3, 3)); //
 // howManyYearsFrom(new Date("azgdsz")); //
-
 
 // 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
 // 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
@@ -359,13 +356,13 @@ const howManyYearsFrom = (date) => {
 
 //18)
 
-const countVowelsAndConsonants =(string)=>{
-  const vowels = string.match(/[aeiouáéíóúü]/ig)
-  const consonants = string.match(/[qwertypsdfghjklñzxcvbnm]/ig)
-  console.log(`The sentence has ${vowels.length} vowels and ${consonants.length} consonants`);
-  
-
-}
+const countVowelsAndConsonants = (string) => {
+  const vowels = string.match(/[aeiouáéíóúü]/gi);
+  const consonants = string.match(/[qwertypsdfghjklñzxcvbnm]/gi);
+  console.log(
+    `The sentence has ${vowels.length} vowels and ${consonants.length} consonants`
+  );
+};
 
 //function calls:
 
@@ -375,10 +372,14 @@ const countVowelsAndConsonants =(string)=>{
 
 //19)
 
-const isValidName =(userName = undefined)=>{
+const isValidName = (userName = undefined) => {
   if (userName === undefined) return console.log("You must input something");
-  return console.log(`We believe your names is ${/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(userName)}`);
-}
+  return console.log(
+    `We believe your names is ${/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(
+      userName
+    )}`
+  );
+};
 
 //function calls:
 
@@ -389,12 +390,16 @@ const isValidName =(userName = undefined)=>{
 // isValidName(5456456);
 // isValidName();
 
-//20 
+//20
 
-const isValidEMail =(eMail = undefined)=>{
+const isValidEMail = (eMail = undefined) => {
   if (eMail === undefined) return console.log("You must input something");
-  return console.log(`We believe your e-mail is ${/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(eMail)}`);
-} 
+  return console.log(
+    `We believe your e-mail is ${/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      eMail
+    )}`
+  );
+};
 
 //function calls:
 
@@ -411,3 +416,97 @@ const isValidEMail =(eMail = undefined)=>{
 // 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
 // 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
 // 23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+
+//21)
+
+const numbers = [4, 8, 5, 2, 9, 8, 5, 5];
+
+const powerOf2 = (array) => {
+  if (!(array instanceof Array))
+    return console.log("Your input must be an array");
+  let invalidValues = 0;
+  array.forEach((value) => {
+    if (typeof value != "number") {
+      invalidValues += 1;
+    }
+  });
+  if (invalidValues > 0)
+    return console.log("Your array contains not numerical values");
+  const poweredNumbers = array.map((value) => Math.pow(value, 2));
+  return console.log(poweredNumbers);
+};
+
+//function calls:
+
+// powerOf2(numbers);
+// powerOf2([1, 5, 6, 2, 5, 9, 87, 74]);
+// powerOf2(8);
+// powerOf2([]);
+// powerOf2({});
+// powerOf2("9");
+// powerOf2(89);
+// powerOf2([87, 85, 96, "dsjhfj", "dfsgsdf", "5456456 ", 45]);
+
+//22)
+
+const higherLower = (array) => {
+  if (!(array instanceof Array))
+    return console.log("Your input must be an array");
+  let invalidValues = 0;
+  array.forEach((value) => {
+    if (typeof value != "number") {
+      invalidValues += 1;
+    }
+  });
+  if (invalidValues > 0)
+    return console.log("Your array contains not numerical values");
+  let higher = array[0];
+  let lower = array[0];
+  array.forEach((value) => {
+    if (value > higher) {
+      higher = value;
+    }
+    if (value < lower) {
+      lower = value;
+    }
+  });
+  return console.log([higher, lower]);
+};
+
+//function calls:
+
+// higherLower([1, 4, 5, 99, -60]); //devolverá [99, -60].
+// higherLower([]);
+// higherLower([-58]);
+// higherLower(58);
+// higherLower("[-5871, -4, -5, -99, -60]");
+
+//23)
+
+const evenAndOdd = (array) => {
+  if (!(array instanceof Array))
+    return console.log("Your input must be an array");
+  let invalidValues = 0;
+  array.forEach((value) => {
+    if (typeof value != "number") {
+      invalidValues += 1;
+    }
+  });
+  if (invalidValues > 0)
+    return console.log("Your array contains not numerical values");
+  let higher = array[0];
+  let pares = [],
+    impares = [];
+  array.forEach((value) =>
+    value % 2 ? impares.push(value) : pares.push(value)
+  );
+  return console.log({ pares, impares });
+};
+
+//function calls:
+
+evenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); //devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+evenAndOdd([]);
+evenAndOdd("[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]");
+evenAndOdd(4);
+evenAndOdd(true);
