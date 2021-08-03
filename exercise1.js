@@ -520,9 +520,9 @@ const evenAndOdd = (array) => {
 //24)
 
 const arraySorting = (array) => {
-  const ascendent = new Array(array.sort((a, b) => a - b));
-  const descendent = new Array(array.sort((a, b) => b - a));
-  return console.log(ascendent, descendent);
+  const ascendent = array.map((el) => el).sort((a, b) => a - b);
+  const descendent = array.map((el) => el).sort((a, b) => b - a);
+  return console.log({ ascendent, descendent });
 };
 
 //function calls:
@@ -532,8 +532,8 @@ const arraySorting = (array) => {
 //25)
 
 const cleanArray = (array) => {
-  const cleanedArray = array.filter((value, index) => {
-    return array.indexOf(value) == index;
+  const cleanedArray = array.filter((value, index, self) => {
+    return self.indexOf(value) === index;
   });
   return console.log(cleanedArray);
 };
@@ -545,12 +545,44 @@ const cleanArray = (array) => {
 //26)
 
 const promedio = (array) => {
-  const promed = array.reduce((previous, current) => {
-    return previous + current;
-  });
+  const promed = array.reduce((previous, current) => previous + current);
   return console.log(promed / array.length);
 };
 
 //function calls:
 
-promedio([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]); //devolverá 4.5.
+//promedio([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]); //devolverá 4.5.
+
+// 27) Programa una clase llamada Pelicula.
+
+// La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
+//   - Todos los datos del objeto son obligatorios.
+//   - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+//      7 restantes números.
+//   - Valida que el título no rebase los 100 caracteres.
+//   - Valida que el director no rebase los 50 caracteres.
+//   - Valida que el año de estreno sea un número entero de 4 dígitos.
+//   - Valida que el país o paises sea introducidos en forma de arreglo.
+//   - Valida que los géneros sean introducidos en forma de arreglo.
+//   - Valida que los géneros introducidos esten dentro de los géneros 
+//      aceptados*.
+//   - Crea un método estático que devuelva los géneros aceptados*.
+//   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+//     decimal de una posición.
+//   - Crea un método que devuelva toda la ficha técnica de la película.
+//   - Apartir de un arreglo con la información de 3 películas genera 3 
+//     instancias de la clase de forma automatizada e imprime la ficha técnica 
+//     de cada película.
+
+// * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+
+class Pelicula{
+  constructor({idIMDB, titulo, director}){//(idIMDB, titulo, director, añoEstreno, paisesDeOrigen, generos,calificacionIMBD){
+    this.idIMDB = idIMDB;
+    this.titulo = titulo;
+    this.director = director;
+  }
+}
+
+const titanic = new Pelicula(3254, "Titanic", "James Cammeron")
+console.log(titanic);
