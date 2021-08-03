@@ -424,6 +424,8 @@ const numbers = [4, 8, 5, 2, 9, 8, 5, 5];
 const powerOf2 = (array) => {
   if (!(array instanceof Array))
     return console.log("Your input must be an array");
+  if (array.length === 0)
+    return console.log("Your input can't be an empty array");
   let invalidValues = 0;
   array.forEach((value) => {
     if (typeof value != "number") {
@@ -439,6 +441,7 @@ const powerOf2 = (array) => {
 //function calls:
 
 // powerOf2(numbers);
+// console.log(numbers);
 // powerOf2([1, 5, 6, 2, 5, 9, 87, 74]);
 // powerOf2(8);
 // powerOf2([]);
@@ -494,7 +497,6 @@ const evenAndOdd = (array) => {
   });
   if (invalidValues > 0)
     return console.log("Your array contains not numerical values");
-  let higher = array[0];
   let pares = [],
     impares = [];
   array.forEach((value) =>
@@ -505,8 +507,50 @@ const evenAndOdd = (array) => {
 
 //function calls:
 
-evenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); //devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
-evenAndOdd([]);
-evenAndOdd("[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]");
-evenAndOdd(4);
-evenAndOdd(true);
+// evenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]); //devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+// evenAndOdd([]);
+// evenAndOdd("[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]");
+// evenAndOdd(4);
+// evenAndOdd(true);
+
+// 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+// 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+// 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+
+//24)
+
+const arraySorting = (array) => {
+  const ascendent = new Array(array.sort((a, b) => a - b));
+  const descendent = new Array(array.sort((a, b) => b - a));
+  return console.log(ascendent, descendent);
+};
+
+//function calls:
+
+// arraySorting([7, 5, 7, 8, 6]); //devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }
+
+//25)
+
+const cleanArray = (array) => {
+  const cleanedArray = array.filter((value, index) => {
+    return array.indexOf(value) == index;
+  });
+  return console.log(cleanedArray);
+};
+
+//function calls:
+
+// cleanArray(["x", 10, "x", 2, "10", 10, true, true]); //devolverá ["x", 10, 2, "10", true].
+
+//26)
+
+const promedio = (array) => {
+  const promed = array.reduce((previous, current) => {
+    return previous + current;
+  });
+  return console.log(promed / array.length);
+};
+
+//function calls:
+
+promedio([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]); //devolverá 4.5.
