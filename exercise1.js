@@ -557,32 +557,70 @@ const promedio = (array) => {
 
 // La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
 //   - Todos los datos del objeto son obligatorios.
-//   - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+//   - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los
 //      7 restantes números.
 //   - Valida que el título no rebase los 100 caracteres.
 //   - Valida que el director no rebase los 50 caracteres.
 //   - Valida que el año de estreno sea un número entero de 4 dígitos.
 //   - Valida que el país o paises sea introducidos en forma de arreglo.
 //   - Valida que los géneros sean introducidos en forma de arreglo.
-//   - Valida que los géneros introducidos esten dentro de los géneros 
+//   - Valida que los géneros introducidos esten dentro de los géneros
 //      aceptados*.
 //   - Crea un método estático que devuelva los géneros aceptados*.
-//   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+//   - Valida que la calificación sea un número entre 0 y 10 pudiendo ser
 //     decimal de una posición.
 //   - Crea un método que devuelva toda la ficha técnica de la película.
-//   - Apartir de un arreglo con la información de 3 películas genera 3 
-//     instancias de la clase de forma automatizada e imprime la ficha técnica 
+//   - Apartir de un arreglo con la información de 3 películas genera 3
+//     instancias de la clase de forma automatizada e imprime la ficha técnica
 //     de cada película.
 
 // * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 
-class Pelicula{
-  constructor({idIMDB, titulo, director}){//(idIMDB, titulo, director, añoEstreno, paisesDeOrigen, generos,calificacionIMBD){
-    this.idIMDB = idIMDB;
+class Pelicula {
+  constructor({
+    id,
+    titulo,
+    director,
+    anioEstreno,
+    paisesDeOrigen,
+    generos,
+    calificacionIMBD,
+  }) {
+    //(id, titulo, director, añoEstreno, paisesDeOrigen, generos,calificacionIMBD){
+    this.id = id;
     this.titulo = titulo;
     this.director = director;
+    this.anioEstreno = anioEstreno;
+    this.paisesDeOrigen = paisesDeOrigen;
+    this.generos = generos;
+    this.calificacionIMBD = calificacionIMBD;
+
+    this.validateIMDB(id);
+  }
+
+  validateString(property, value) {
+    if (!value) return console.warn(`${property} "${value}" it's empty`);
+    if (typeof value != "string")
+      return console.error(`${property} "${value}" is not a text s tring`);
+    return true;
+  }
+
+  validateIMDB(id) {
+    if (this.validateString("IMDBid", id)) {
+      if (!(/^([a-z]{2}([0-9]){7})$/.test(id))) 
+        return console.error(
+          `IMDB id "${id}" must begin with 2 lower case letters followed by 7 numbers`
+        );
+    }
   }
 }
 
-const titanic = new Pelicula(3254, "Titanic", "James Cammeron")
+const titanic = new Pelicula({
+  id: "aa1234567",
+});
+const avengers = new Pelicula({
+  id: "A4567",
+});
+
 console.log(titanic);
+console.log(avengers);
