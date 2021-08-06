@@ -6,7 +6,7 @@
 //1)
 
 const numberOfCharactersOfAString = (string) =>
-  typeof string != "string"
+  typeof string !== "string"
     ? console.warn("Error, your input is not a string")
     : console.log(`The string length is: ${string.length}`);
 
@@ -21,7 +21,7 @@ const numberOfCharactersOfAString = (string) =>
 
 const trimmedText = (string, numOfCharacters) => {
   const trimmedString =
-    typeof string != "string" || typeof numOfCharacters != "number"
+    typeof string !== "string" || typeof numOfCharacters !== "number"
       ? console.warn("Error, your input is not a string and a number")
       : console.log(
           `The trimmed string is: ${string.slice(0, numOfCharacters)}`
@@ -59,7 +59,7 @@ const stringSplitBySeparator = (string, separator) =>
 
 const stringRepeatXTimes = (string, repeatTimes) => {
   let stringRepeat = [];
-  if (typeof string != "string" || typeof repeatTimes != "number")
+  if (typeof string !== "string" || typeof repeatTimes !== "number")
     return (stringRepeat = console.warn(
       "Error. You have to input a string and a number"
     ));
@@ -91,7 +91,7 @@ const stringRepeatXTimes = (string, repeatTimes) => {
 //5)
 
 const reverseString = (string) =>
-  typeof string != "string"
+  typeof string !== "string"
     ? console.warn("You have to input a string")
     : console.log(string.split("").reverse().join(""));
 
@@ -103,9 +103,9 @@ const reverseString = (string) =>
 
 const timesWordRepeats = (string, repeatedWord) => {
   const regex = new RegExp(repeatedWord, "ig");
-  if (typeof string != "string")
+  if (typeof string !== "string")
     return console.warn("Your first argument must be a string");
-  if (typeof repeatedWord != "string")
+  if (typeof repeatedWord !== "string")
     return console.warn("Your second argument must be a string");
   return console.log(string.match(regex).length);
 };
@@ -118,7 +118,7 @@ const timesWordRepeats = (string, repeatedWord) => {
 
 const esPalindromo = (string) => {
   string = string.toLowerCase();
-  if (typeof string != "string")
+  if (typeof string !== "string")
     return console.warn("Your input must be a string");
   const reversedString = string.split("").reverse().join("");
   return string === reversedString;
@@ -132,9 +132,9 @@ const esPalindromo = (string) => {
 //8)
 
 const deleteCharacters = (string, characters) => {
-  if (typeof string != "string")
+  if (typeof string !== "string")
     return console.warn("Your first argument must be a string");
-  if (typeof characters != "string")
+  if (typeof characters !== "string")
     return console.warn("Your second argument must be a string too");
   return console.log(string.split(characters).join(""));
 };
@@ -159,7 +159,7 @@ const numFrom501to600 = () =>
 //10)
 
 const evalCapicua = (number) => {
-  if (typeof number != "number")
+  if (typeof number !== "number")
     return console.log("Your input must be a number");
   number = number.toString(10);
   const numberReversed = number.split("").reverse().join("");
@@ -183,7 +183,7 @@ const evalCapicua = (number) => {
 // };
 
 // const factorialOf = (number) => {
-//   if (typeof number != 'number' || number <= 0) return console.log("Your input must be an integer number bigger than 0")
+//   if (typeof number !== 'number' || number <= 0) return console.log("Your input must be an integer number bigger than 0")
 //   const positiveIntegers = arrayOfPositiveIntegers(number);
 //   const factorial = positiveIntegers.reduce(
 //     (accumulator, currentValue) => accumulator * currentValue
@@ -192,7 +192,7 @@ const evalCapicua = (number) => {
 // };
 
 const factorialOf = (number) => {
-  if (typeof number != "number" || number <= 0)
+  if (typeof number !== "number" || number <= 0)
     return console.log("Your input must be an integer number bigger than 0");
   let factorial = number;
   let acumulador = number;
@@ -218,7 +218,7 @@ const factorialOf = (number) => {
 //12)
 
 const isPrime = (number) => {
-  if (typeof number != "number" || number <= 0)
+  if (typeof number !== "number" || number <= 0)
     return console.log("Your input must be an integer number bigger than 0");
   for (let i = 2; i < number; i++) {
     console.log(`${number} % ${i} = ${number % i} `);
@@ -253,10 +253,10 @@ const evenOrOdd = (number) =>
 //14)
 
 const temperatureConversor = (temperature, system) => {
-  if (typeof temperature != "number")
+  if (typeof temperature !== "number")
     return console.log("The first value must be a number");
   system = system.toLowerCase();
-  if (system != "c" && system != "f")
+  if (system !== "c" && system !== "f")
     return console.log("The second argument must be C or F");
   if (system === "c") {
     console.log(`${temperature}ºC es igual a ${(temperature * 9) / 5 + 32}ºF`);
@@ -286,10 +286,10 @@ const temperatureConversor = (temperature, system) => {
 //15)
 
 const changeNumberBase = (number, base) => {
-  if (typeof number != "number")
+  if (typeof number !== "number")
     return console.log("You must input a number as first parameter");
 
-  if ((base != 2 && base != 10) || typeof base != "number")
+  if ((base !== 2 && base !== 10) || typeof base !== "number")
     return console.log(
       "You must input the number 2 if the number is binary or the number 10 if i'ts decimal as a second argument"
     );
@@ -314,7 +314,7 @@ const changeNumberBase = (number, base) => {
 //16)
 
 const priceDiscoutTotal = (price, discount) => {
-  if (typeof price != "number" || typeof discount != "number")
+  if (typeof price !== "number" || typeof discount !== "number")
     return console.log("The arguments must be numbers");
   console.log((price * (100 - discount)) / 100);
 };
@@ -428,7 +428,7 @@ const powerOf2 = (array) => {
     return console.log("Your input can't be an empty array");
   let invalidValues = 0;
   array.forEach((value) => {
-    if (typeof value != "number") {
+    if (typeof value !== "number") {
       invalidValues += 1;
     }
   });
@@ -457,7 +457,7 @@ const higherLower = (array) => {
     return console.log("Your input must be an array");
   let invalidValues = 0;
   array.forEach((value) => {
-    if (typeof value != "number") {
+    if (typeof value !== "number") {
       invalidValues += 1;
     }
   });
@@ -491,7 +491,7 @@ const evenAndOdd = (array) => {
     return console.log("Your input must be an array");
   let invalidValues = 0;
   array.forEach((value) => {
-    if (typeof value != "number") {
+    if (typeof value !== "number") {
       invalidValues += 1;
     }
   });
@@ -586,7 +586,6 @@ class Pelicula {
     generos,
     calificacionIMBD,
   }) {
-    //(id, titulo, director, añoEstreno, paisesDeOrigen, generos,calificacionIMBD){
     this.id = id;
     this.titulo = titulo;
     this.director = director;
@@ -596,31 +595,92 @@ class Pelicula {
     this.calificacionIMBD = calificacionIMBD;
 
     this.validateIMDB(id);
+    this.validateTitle(titulo);
+    this.validateDirector(director);
+    this.validateYear(anioEstreno);
+    this.validateOriginCountries(paisesDeOrigen)
+  }
+
+  validateLength(property, value, maxLength) {
+    if (value.length > maxLength)
+      return console.error(
+        `${property} "${value}" exceeds the maximun length of ${maxLength}`
+      );
+    return true;
   }
 
   validateString(property, value) {
     if (!value) return console.warn(`${property} "${value}" it's empty`);
-    if (typeof value != "string")
-      return console.error(`${property} "${value}" is not a text s tring`);
+    if (typeof value !== "string")
+      return console.error(`${property} "${value}" is not a text string`);
     return true;
+  }
+  validateNumber(property, value) {
+    if (!value) return console.warn(`${property} "${value}" it's empty`);
+    if (typeof value !== "number")
+      return console.error(`${property} "${value}" is not a number`);
+    return true;
+  }
+  validateArrayofStrings(property, array) {
+    if (!array) return console.error("Your array can not be empty");
+    if (!(array instanceof Array))
+      return console.error(`${property} "${array}" is not an array`);
+    if (array.length < 1)
+      return console.error(`${property} array can not be empty`);
+    array.forEach((element) => {
+      if (typeof element !== "string")
+        return console.error(`${property} "${element}" is not a string`);
+    });
+    return true;////
   }
 
   validateIMDB(id) {
     if (this.validateString("IMDBid", id)) {
-      if (!(/^([a-z]{2}([0-9]){7})$/.test(id))) 
+      if (!/^([a-z]){2}([0-9]){7}$/.test(id))
         return console.error(
           `IMDB id "${id}" must begin with 2 lower case letters followed by 7 numbers`
         );
     }
   }
+  validateTitle(title) {
+    if (this.validateString("Title", title)) {
+      this.validateLength("título", title, 100);
+    }
+    return true;
+  }
+  validateDirector(director) {
+    if (this.validateString("Director", director)) {
+      this.validateLength("Director", director, 50);
+    }
+    return true;
+  }
+  validateYear(year) {
+    if (this.validateNumber("Año de estreno", year)) {
+      if (!(Number.isInteger(year) && year > 1000 && year < 9999))
+        return console.error(
+          `Year "${year}" must be an integer number of 4 digits`
+        );
+      return true;
+    }
+  }
+  validateOriginCountries(paisesDeOrigen) {
+    if (this.validateArrayofStrings('Countries of origin',paisesDeOrigen))
+      return true
+  }
 }
 
-const titanic = new Pelicula({
-  id: "aa1234567",
-});
+// const titanic = new Pelicula({
+//   id: "aa1234567",
+// });
 const avengers = new Pelicula({
-  id: "A4567",
+  id: "tt7865746",
+  titulo: "Titanic",
+  director: "James Cameron",
+  anioEstreno: 1991,
+  paisesDeOrigen: ['Colombia', 'Puerto Rico'],
+  // generos,
+  // calificacionIMBD,
 });
 
-console.log(titanic);
-console.log(avengers);
+// console.log(titanic);
+// console.log(avengers);
