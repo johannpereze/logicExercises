@@ -600,10 +600,11 @@ class Pelicula {
     this.validateYear(anioEstreno);
     this.validateOriginCountries(paisesDeOrigen);
     this.validateGenres(generos);
+    this.validateScore(calificacionIMBD);
   }
 
-  static genres() {
-    const validGenres = [
+  static get genres() {
+    return [
       "Action",
       "Adult",
       "Adventure",
@@ -633,7 +634,6 @@ class Pelicula {
       "War",
       "Western",
     ];
-    return validGenres;
   }
 
   validateLength(property, value, maxLength) {
@@ -713,9 +713,20 @@ class Pelicula {
   }
   validateGenres(generos) {
     if (this.validateArrayofStrings("Genres", generos)) {
-      if (this.validateIfArrayIncludesValidValues(generos, Pelicula.genres()))
+      if (this.validateIfArrayIncludesValidValues(generos, Pelicula.genres))
         return true;
     }
+  }
+  validateScore(calificacionIMBD) {
+    if (this.validateNumber('calificacion IMBD',calificacionIMBD)) {
+      //if (!/^([0-9]){1}.([0-9]){1}$/.test(calificacionIMBD))
+      return calificacionIMBD < 0 || calificacionIMBD > 10
+      ? console.error(
+          `You must input a number from 0.0 to 10.0 with 1 decimal`
+        )
+        : this.calificacionIMBD = calificacionIMBD.toFixed(1)
+    }
+    return true;
   }
 }
 
@@ -723,15 +734,15 @@ class Pelicula {
 //   id: "aa1234567",
 // });
 const avengers = new Pelicula({
-  id: "tt7865746",
+  id: "",
   titulo: "Titanic",
   director: "James Cameron",
   anioEstreno: 1991,
   paisesDeOrigen: ["Colombia", "Puerto Rico"],
-  generos: ["Action", "Adult", 34534],
-  // calificacionIMBD,
+  generos: ["Action", "Adult", "Comedy"],
+  calificacionIMBD: 8.9436545,
 });
 
 // console.log(titanic);
-// console.log(avengers);
-// console.log(Pelicula.genres());
+console.log(avengers);
+// console.log(Pelicula.genres);
