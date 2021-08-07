@@ -598,7 +598,42 @@ class Pelicula {
     this.validateTitle(titulo);
     this.validateDirector(director);
     this.validateYear(anioEstreno);
-    this.validateOriginCountries(paisesDeOrigen)
+    this.validateOriginCountries(paisesDeOrigen);
+    this.validateGenres(generos);
+  }
+
+  static genres() {
+    const validGenres = [
+      "Action",
+      "Adult",
+      "Adventure",
+      "Animation",
+      "Biography",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "Film Noir",
+      "Game-Show",
+      "History",
+      "Horror",
+      "Musical",
+      "Music",
+      "Mystery",
+      "News",
+      "Reality-TV",
+      "Romance",
+      "Sci-Fi",
+      "Short",
+      "Sport",
+      "Talk-Show",
+      "Thriller",
+      "War",
+      "Western",
+    ];
+    return validGenres;
   }
 
   validateLength(property, value, maxLength) {
@@ -627,11 +662,20 @@ class Pelicula {
       return console.error(`${property} "${array}" is not an array`);
     if (array.length < 1)
       return console.error(`${property} array can not be empty`);
-    array.forEach((element) => {
-      if (typeof element !== "string")
-        return console.error(`${property} "${element}" is not a string`);
+    for (const iterator of array) {
+      if (typeof iterator !== "string")
+        return console.error(`${property} "${iterator}" is not a string`);
+    }
+    return true;
+  }
+  validateIfArrayIncludesValidValues(arrayToEvaluate, arrayWithValidGenres) {
+    arrayToEvaluate.forEach((value) => {
+      if (!arrayWithValidGenres.includes(value))
+        return console.error(
+          `Your input ${arrayToEvaluate} has incorrect genres. You must only input ${arrayWithValidGenres}`
+        );
     });
-    return true;////
+    return true;
   }
 
   validateIMDB(id) {
@@ -664,8 +708,14 @@ class Pelicula {
     }
   }
   validateOriginCountries(paisesDeOrigen) {
-    if (this.validateArrayofStrings('Countries of origin',paisesDeOrigen))
-      return true
+    if (this.validateArrayofStrings("Countries of origin", paisesDeOrigen))
+      return true;
+  }
+  validateGenres(generos) {
+    if (this.validateArrayofStrings("Genres", generos)) {
+      if (this.validateIfArrayIncludesValidValues(generos, Pelicula.genres()))
+        return true;
+    }
   }
 }
 
@@ -677,10 +727,11 @@ const avengers = new Pelicula({
   titulo: "Titanic",
   director: "James Cameron",
   anioEstreno: 1991,
-  paisesDeOrigen: ['Colombia', 'Puerto Rico'],
-  // generos,
+  paisesDeOrigen: ["Colombia", "Puerto Rico"],
+  generos: ["Action", "Adult", 34534],
   // calificacionIMBD,
 });
 
 // console.log(titanic);
 // console.log(avengers);
+// console.log(Pelicula.genres());
